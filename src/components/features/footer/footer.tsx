@@ -18,7 +18,7 @@ export default function Footer() {
         className="opacity-30 object-cover"
       />
 
-      <div className="relative z-10">
+      <div className="relative">
         <div className="flex justify-center md:gap-14 lg:gap-20 gap-5 mx-auto md:font-bold font-semibold md:text-base text-[0.6rem] sm:text-sm text-custom-blue-900">
           <Link href={"/"}> {t("about-us")}</Link>
           <Link href={"/"}> {t("store-location")}</Link>

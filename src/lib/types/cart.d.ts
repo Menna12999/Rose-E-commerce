@@ -14,9 +14,13 @@ declare type CartItem = {
     __v?: number;
   } & DatabaseFields;
   
-  declare type successCart = {
-    message: "success";
-    numOfCartItems: number;
-    cart: Cart;
-  };
+ declare type Getcart ={
+  message:"success";
+  numOfCartItems:number;
+  cart:Cart;
+ }
   
+ type Props = {
+  items: CartItem[];
+  token: string;
+};

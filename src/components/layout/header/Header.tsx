@@ -9,6 +9,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth";
 import { Button } from '@/components/ui/button';
 import Loginbtn from './Loginbtn';
+import { PiBagBold } from "react-icons/pi";
+import { getCart } from '@/lib/actions/cart.action';
+
 
 
 
@@ -19,7 +22,7 @@ export default async function Header(){
 
   const session = await getServerSession(authOptions);
 
-
+  const cart = await getCart(session?.token as string);
 
 
   return (
@@ -43,7 +46,14 @@ export default async function Header(){
         </div>
 
       )}
+       {session?.user && (
+      <Link href={'/cart'} className='relative text-2xl text-rose-900 font-bold'>
+      <PiBagBold />
+           <span className='flex justify-center items-center text-lg text-white w-6 h-6 rounded-full bg-rose-900 absolute right-[-15px] top-[-20px]'>{cart?.numOfCartItems}</span>
+          </Link>
+       )}
           <LocaleToggle/>
+          
         </div>
     </header>
   )

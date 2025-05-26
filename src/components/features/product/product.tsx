@@ -1,46 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { IoStar } from "react-icons/io5";
 import { IoIosStarOutline } from "react-icons/io";
 import { useTranslations } from "next-intl";
 import { TbEye, TbHeart } from "react-icons/tb";
+import { BsHandbag } from "react-icons/bs";
+import { addToCart } from "@/lib/actions/cart.action";
+import useAddToCart from "@/hooks/cart/use-add-to-cart";
+import { useSession } from "next-auth/react";
+
 
 export default function Product({ product }: { product: Product }) {
   //  Translation
   const t = useTranslations();
-
- // Current timestamp
-const currentTime = new Date().getTime();
-
-// Last update timestamp for the product
-const lastUpdatedTime = new Date(product?.updatedAt).getTime();
-
-// Time difference in milliseconds
-const timeDifference = currentTime - lastUpdatedTime;
-
-// Convert difference to full days
-const totalDaysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-// Quantity of the product
-const availableQuantity = product?.quantity ?? 0
+  const {addToCart} = useAddToCart();
+  const {data} = useSession()
 
   return (
     <>
       <div className="group relative rounded-[20px] overflow-hidden min-h-[222px] w-full ">
-        {timeDifference < 7 && (
-          <>
-            <div className="absolute rtl:text-sm font-roboto font-medium text-xs leading-5 tracking-[1px] z-[9] top-2 right-2 bg-custom-rose-900  text-white px-4 py-1 rounded-full">
-              {t("new")}
-            </div>
-          </>
-        )}
-
-        {availableQuantity === 0 && (
-          <>
-            <div className="absolute font-roboto font-medium text-xs leading-5 tracking-[1px] z-[9] top-2 right-2 bg-custom-red  text-white px-2 py-1 rounded-full">
-              {t("out-of-stock")}
-            </div>
-          </>
-        )}
+       
 
         {/* Product image */}
         <Image
@@ -58,19 +38,15 @@ const availableQuantity = product?.quantity ?? 0
         </div>
       </div>
 
-      {/* Product details */}
       <div className=" flex items-center justify-between  mt-4">
         <div className="item-details ps-4 ">
-          {/* Product title */}
           <h3
             className="font-semibold text-base  line-clamp-1  text-custom-blue-900 mb-[9px]"
             title={product?.title}
           >
-            {/* Formating the title if it has '|' */}
             {product?.title}
           </h3>
 
-          {/* Stars div for rating product */}
           <div className="stars flex gap-1">
             <IoStar className="text-custom-gold" />
             <IoStar className="text-custom-gold" />
@@ -88,7 +64,9 @@ const availableQuantity = product?.quantity ?? 0
             </span>
           </div>
         </div>
-
+         <button className="rounded-full bg-violet-700 p-3" onClick={()=>addToCart({token: data?.token as string,productId:product._id,quantity:1})}>
+         <BsHandbag  className="text-white "/>
+         </button>
       </div>
     </>
   );

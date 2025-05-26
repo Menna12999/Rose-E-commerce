@@ -115,5 +115,20 @@
   "enter-your-email": "Enter your Email",
   "subscribe": "Subscribe",
   "by-subscribe": "\tBy Subscribe Our Newsletter\t",
-  "trusted-by-over-4-5k-companies": "Trusted by over 4.5k+ companies"
+  "trusted-by-over-4-5k-companies": "Trusted by over 4.5k+ companies",
+  "image": "image",
+  "productname": "product Name",
+  "price": "price",
+  "quantity": "Quantity",
+  "sub-total": "sub total",
+  "delete-product": "delete product",
+  "productName": "Product Name\n",
+  "subTotal": "Sub Total",
+  "deleteProduct": "Delete Product",
+  "year-coupon-code": "year coupon code",
+  "apply-coupon": "Apply Coupon",
+  "add-to-cart-successfully": "Product Add to Cart Successfully",
+  "something-wrong": "something wrong",
+  "product-removed-successfully": "Product Removed Successfully",
+  "product-updated-successfully": "product updated successfully"
 }

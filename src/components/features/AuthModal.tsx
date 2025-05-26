@@ -14,7 +14,7 @@ export default function AuthModal({ showModal, setShowModal, currentForm, setCur
 
   return (
     <div
-      className="fixed inset-0 flex justify-center items-center min-h-screen bg-black bg-opacity-80 z-40 overflow-y-auto"
+      className="fixed inset-0 flex justify-center items-center min-h-screen bg-black bg-opacity-80 z-[999] overflow-y-auto"
       onClick={closeModal}
     >
       <div

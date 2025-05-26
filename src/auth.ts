@@ -15,7 +15,9 @@ export const authOptions: NextAuthOptions = {
         password: {},
       },
       authorize: async (credentials) => {
-        const response = await fetch(`${process.env.API}/auth/login`, {
+        console.log("authorize called with credentials:", credentials);
+
+        const response = await fetch(`${process.env.API}/auth/signin`, {
           method: "POST",
           body: JSON.stringify({
             email: credentials?.email,
@@ -27,10 +29,10 @@ export const authOptions: NextAuthOptions = {
         });
         //if login was successfull ,return the user data alongside the token
         const payload: APIResponse<LoginResponse> = await response.json();
-        console.log(payload);
+        console.log("Payload from backend:", payload);
         if ("message" in payload) {
           return {
-            // id: payload.user._id,
+            id: payload.user._id,
             ...payload.user,
             token: payload.token,
           };
@@ -44,6 +46,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     jwt: ({ token, user }) => {
       if (user) {
+        console.log(user);
         token.token = user.token;
         token._id = user._id;
         token.firstName = user.firstName;
@@ -59,6 +62,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     session: ({ session, token }) => {
+      session.token = token.token;
       session._id = token._id;
       session.firstName = token.firstName;
       session.lastName = token.lastName;

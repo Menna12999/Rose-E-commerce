@@ -107,5 +107,18 @@
   "get-20-off-discount-coupon": "احصل على قسيمة خصم بنسبة 20 ٪",
   "enter-your-email": "أدخل بريدك الإلكتروني",
   "by-subscribe": "عن طريق الاشتراك في النشرة الإخبارية لدينا",
-  "trusted-by-over-4-5k-companies": "موثوق به أكثر من 4.5 ألف شركات"
+  "trusted-by-over-4-5k-companies": "موثوق به أكثر من 4.5 ألف شركات",
+  "image": "صورة",
+  "productname": "اسم المنتج",
+  "price": "سعر",
+  "quantity": "كمية",
+  "sub-total": "مجموع",
+  "delete-product": "حذف المنتج",
+  "productName": "اسم المنتج",
+  "subTotal": "مجموع",
+  "deleteProduct": "حذف المنتج",
+  "year-coupon-code": "رمز القسيمة العام",
+  "apply-coupon": "تطبيق القسيمة",
+  "product-removed-successfully": "تمت إزالة المنتج بنجاح",
+  "product-updated-successfully": "تم تحديث المنتج بنجاح"
 }

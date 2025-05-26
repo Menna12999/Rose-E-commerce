@@ -16,7 +16,7 @@ export default function Layout({ params:{locale},children }: LocaleLayoutProps){
     setRequestLocale(locale)
     return(
         <html lang={locale} dir={locale==='ar'?'rtl':'ltr'}>
-        <body>
+        <body className="pt-[100px] flex flex-col justify-between">
 <Providers>
     {/******Toast***** */}
     <Header/>
